@@ -42,7 +42,7 @@ export default function Inventario() {
         {
           id: Date.now(),
           ...novoProduto,
-          lpnList: [] // 🔴 GARANTE QUE SEMPRE EXISTE
+          lpnList: [] 
         }
       ]);
     }
@@ -63,9 +63,7 @@ export default function Inventario() {
     setProdutos(prev => prev.filter(p => p.id !== id));
   };
 
-  /* =========================
-     CONSULTA
-  ========================== */
+  
   const resultadoConsulta = () => {
     if (!consulta.tipo || !consulta.valor) return [];
     const valor = consulta.valor.toLowerCase();
@@ -87,9 +85,6 @@ export default function Inventario() {
     return [];
   };
 
-  /* =========================
-     GERAR CONTAGEM
-  ========================== */
   const gerarContagem = (produto) => {
     const quantidadeAtual = (produto.lpnList || []).reduce(
       (acc, l) => acc + Number(l.quantidade || 0),
@@ -135,7 +130,7 @@ export default function Inventario() {
           <button className="butin" onClick={() => setTipoAgenda("gc")}>Gerar Contagem</button>
         </div>
 
-        {/* ================= CADASTRO ================= */}
+       
         {tipoAgenda === "cp" && (
           <div className="painel-agenda">
             <input placeholder="Posição" value={novoProduto.posição}  className="painel-agenda"
@@ -175,7 +170,7 @@ export default function Inventario() {
           </div>
         )}
 
-        {/* ================= CONSULTA ================= */}
+        
         {tipoAgenda === "c" && (
           <div className="painel-agenda">
             <select value={consulta.tipo} onChange={e => setConsulta({ ...consulta, tipo: e.target.value })}>

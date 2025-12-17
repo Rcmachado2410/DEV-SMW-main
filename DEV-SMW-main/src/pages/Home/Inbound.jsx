@@ -29,14 +29,14 @@ export default function Inbound() {
     return `${dia}/${mes}/${ano}`;
   };
 
-  // ---------- Cadastro Produto ----------
+ 
   const salvarProduto = () => {
     if (!novoProduto.nome || !novoProduto.codBarra) return;
     setProdutos([...produtos, { id: Date.now(), ...novoProduto }]);
     setNovoProduto({ nome: "", descricao: "", codBarra: "", marca: "" });
   };
 
-  // ---------- Assignação Inbound Shipment ----------
+  
   const abrirAssignModal = (nota) => {
     setNotaSelecionada(nota);
     const inicial = {};
@@ -62,14 +62,14 @@ export default function Inbound() {
 
     const totalItens = Object.values(quantidadesProdutos).reduce((acc, val) => acc + Number(val), 0);
 
-    // Atualiza agendamento sem LPN
+    
     setAgendamentos(prev => prev.map(a =>
       a.id === notaSelecionada.id
         ? { ...a, totalItensRecebidos: totalItens, status: "Assignado", produtosRecebidos: { ...quantidadesProdutos } }
         : a
     ));
 
-    // Cria ASN sem LPN/SN
+   
     const asn = {
       id: Date.now(),
       notaId: notaSelecionada.id,
@@ -90,12 +90,12 @@ export default function Inbound() {
     setQuantidadesProdutos({});
   };
 
-  // ---------- Recebimento ----------
+  
   const abrirReceberModal = (asn) => {
     setAsnReceber(asn);
     setReceberProduto(null);
     setQuantidadeRecebida(0);
-    setLpnAtual(""); // LPN só aqui
+    setLpnAtual(""); 
     setReceberModalAberto(true);
   };
 
@@ -147,7 +147,7 @@ export default function Inbound() {
     setAgendamentos(prev => prev.filter(a => a.id !== id));
   };
 
-  // ---------- Filtragem ----------
+  
   const agendamentosFiltrados = agendamentos.filter(a => {
     const notaOk = filtroNota ? a.nf.includes(filtroNota) : true;
     const statusOk = filtroStatus ? a.status.includes(filtroStatus) : true;
@@ -166,7 +166,7 @@ export default function Inbound() {
           <button className="butin" onClick={() => setTipoAgenda("io")}>Inbound Order (ASN)</button>
         </div>
 
-        {/* Cadastro Produto */}
+        
         {tipoAgenda === "cp" && (
           <div className="painel-agenda" >
             <input style={{display:"flex",justifyContent:"space-between"}} placeholder="Nome" value={novoProduto.nome} onChange={e => setNovoProduto({ ...novoProduto, nome: e.target.value })} />
@@ -199,7 +199,7 @@ export default function Inbound() {
           </div>
         )}
 
-        {/* Inbound Shipment */}
+        
         {tipoAgenda === "is" && (
           <div className="painel-agenda">
             <h3>Inbound Shipment</h3>
@@ -236,7 +236,7 @@ export default function Inbound() {
           </div>
         )}
 
-        {/* Inbound Orders (ASN) */}
+       
         {tipoAgenda === "io" && (
           <div className="painel-agenda">
             <h3>Inbound Orders (ASN)</h3>
@@ -290,7 +290,7 @@ export default function Inbound() {
           </div>
         )}
 
-        {/* Modal Assignação */}
+        
         {modalAberto && (
           <div className="modal-overlay" onClick={() => setModalAberto(false)}>
             <div className="modal" style={{ width: "450px", gap:"10PX",padding: "20px" ,height:"200 PX"}} onClick={e => e.stopPropagation()}>
@@ -314,7 +314,7 @@ export default function Inbound() {
           </div>
         )}
 
-        {/* Modal Receber */}
+        
         {receberModalAberto && (
           <div className="modal-overlay" onClick={() => setReceberModalAberto(false)}>
             <div className="modal" onClick={e => e.stopPropagation()}>

@@ -8,24 +8,24 @@ export default function Outbound() {
   const [tipoAgenda, setTipoAgenda] = useState(null);
   const [modalAberto, setModalAberto] = useState(false);
 
-  // --- Criar Onda ---
+ 
   const [novaNota, setNovaNota] = useState({
     nf: "",
     item: null,
     quantidade: ""
   });
 
-  const [todasTarefas, setTodasTarefas] = useState([]); // tarefas geradas na Onda
+  const [todasTarefas, setTodasTarefas] = useState([]); 
 
-  // --- Gerar Separação ---
+  
   const [tarefasFiltradas, setTarefasFiltradas] = useState([]);
 
-  // --- Criar Carro ---
+  
   const [carros, setCarros] = useState([]);
   const [carroNotasSelecionadas, setCarroNotasSelecionadas] = useState([]);
   const [nomeCarro, setNomeCarro] = useState("");
 
-  // --- Funções Criar Onda ---
+  
   const adicionarTarefa = () => {
     if (!novaNota.nf || !novaNota.item || !novaNota.quantidade) return;
 
@@ -60,7 +60,7 @@ export default function Outbound() {
     );
   };
 
-  // --- Funções Criar Carro ---
+  
   const criarCarro = () => {
     if (!nomeCarro || carroNotasSelecionadas.length === 0) return;
 
@@ -95,7 +95,7 @@ export default function Outbound() {
       )
     );
 
-    // Atualiza status das tarefas que estão no carro
+    
     const carro = carros.find(c => c.id === carroId);
     if (carro) {
       setTodasTarefas(prev =>
@@ -152,7 +152,7 @@ export default function Outbound() {
           </div>
         )}
 
-        {/* --- Gerar Separação --- */}
+        
         {tipoAgenda === "gs" && (
           <div className="painel-agenda">
             <h3>Gerar Separação</h3>
@@ -180,7 +180,7 @@ export default function Outbound() {
           </div>
         )}
 
-        {/* --- Acompanhar Tarefas --- */}
+        
         {tipoAgenda === "at" && (
           <div className="painel-agenda">
             <h3>Acompanhar Tarefas</h3>
@@ -204,7 +204,7 @@ export default function Outbound() {
           </div>
         )}
 
-        {/* --- Expedir Order --- */}
+        
         {tipoAgenda === "eo" && (
           <div className="painel-agenda">
             <h3>Expedir Order - Criar Carro</h3>

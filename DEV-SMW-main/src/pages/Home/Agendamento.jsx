@@ -26,7 +26,7 @@ export default function Agendamento() {
     return `${dia}/${mes}/${ano}`;
   };
 
-  // FILTRO INDEPENDENTE
+  
   const agendamentosFiltrados = agendamentos.filter((item) => {
     if (tipoAgenda === "in") {
       const dataOk = filtroData ? item.data?.startsWith(filtroData) : true;
@@ -42,7 +42,7 @@ export default function Agendamento() {
     return false;
   });
 
-  // SALVAR AGENDAMENTO
+
   const salvarAgendamento = () => {
     if (!novo.nf || (tipoAgenda === "in" && (!novo.data || !novo.hora || !novo.cliente))) return;
 
@@ -84,14 +84,14 @@ export default function Agendamento() {
     );
   };
 
-  // EDITAR AGENDAMENTO
+ 
   const editarAgendamento = (item) => {
     setNovo(item);
     setEditandoId(item.id);
     setModalAberto(true);
   };
 
-  // EXCLUIR AGENDAMENTO
+  
   const excluir = (id) => {
     setAgendamentos(prev => prev.filter(item => item.id !== id));
   };

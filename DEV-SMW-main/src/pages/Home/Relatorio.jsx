@@ -42,7 +42,7 @@ export default function Relatorio() {
       <div className="home-content">
         <h1>Relatório Operacional</h1>
 
-        {/* FILTROS */}
+        
         <div
           className="painel-agenda"
           style={{ display: "flex", gap: "10px", alignItems: "center" }}
@@ -69,7 +69,7 @@ export default function Relatorio() {
           </span>
         </div>
 
-        {/* TABELA */}
+        
         <div className="painel-agenda">
           <table className="listaagen">
             <thead>
