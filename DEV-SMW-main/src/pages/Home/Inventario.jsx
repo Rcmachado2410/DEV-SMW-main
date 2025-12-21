@@ -21,9 +21,7 @@ export default function Inventario() {
 
   const [tarefaContagem, setTarefaContagem] = useState([]);
 
-  /* =========================
-     CADASTRO POSIÇÃO / ITEM
-  ========================== */
+ 
   const salvarProduto = () => {
     if (!novoProduto.posição || !novoProduto.codigo || !novoProduto.limite) return;
 
@@ -211,7 +209,7 @@ export default function Inventario() {
           </div>
         )}
 
-        {/* ================= CONTAGEM ================= */}
+        
         {tipoAgenda === "gc" && (
           <div className="painel-agenda">
             <table className="listaagen">
